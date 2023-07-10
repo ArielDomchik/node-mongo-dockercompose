@@ -2,6 +2,8 @@ pipeline {
     agent any
     
     environment {
+        dockeruser = credentials('dockeruser')
+        dockerpassword = credentials('dockerpassword')
         deploy_ip = credentials('deployip')
         REPO = arieldomchik
         app = nodeapp
@@ -29,9 +31,10 @@ pipeline {
        
         stage('Push') {
             steps { 
-                sh 'docker login'
+                sh 'docker login -u=${dockeruser} -p={dockerpassword}'
                 sh 'docker build -t ${APP} .'
                 sh 'docker tag ${APP} ${REPO}/${APP}:${BUILD_NUMBER}'
+                sh 'docker push ${REPO}/${APP}:${BUILD_NUMBER}'
              }
         }
   
