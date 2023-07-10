@@ -20,6 +20,10 @@ Before running the application, make sure you have the following installed:
 
 -   Docker: [Installation Guide](https://docs.docker.com/get-docker/)
 -   Docker Compose: [Installation Guide](https://docs.docker.com/compose/install/)
+-   Jenkins: [Installation Guide](https://www.jenkins.io/doc/book/installing/linux/)
+
+
+** note: Jenkins can be run as a docker container
 
 ## Setup
 
@@ -32,6 +36,21 @@ Before running the application, make sure you have the following installed:
 `npm install` 
 
 This command will install the required Node.js packages specified in the `package.json` file.
+
+## Jenkins Pipeline
+
+The project includes a Jenkinsfile that defines a pipeline for building, testing, and deploying the application using Jenkins. The pipeline stages are as follows:
+
+1.  Build: This stage installs the application dependencies and builds the Docker containers using the docker-compose command.
+
+2.  Test: This stage runs the tests for the application. You can customize this stage by adding your own test scripts.
+
+3.  Clean: This stage stops and removes the Docker containers using the docker-compose down command.
+
+4.  Push: This stage logs in to the Docker registry, builds the Docker image, tags it with a version number, and pushes it to the repository specified in the REPO environment variable.
+
+5.  Deploy: This stage uses SSH to connect to the deployment server specified in the deploy_ip environment variable and executes the deploy.sh script to deploy the application. 
+
 
 ## Usage
 
