@@ -39,7 +39,7 @@ pipeline {
     
     post {
         always {
-            sh 'docker rmi -f $(docker images -q)
+            sh 'docker rmi -f $(docker images -q)'
         }
         success {
             slackSend (channel: '#general', token: '<secret-token>', message: "Pipeline ran successfully!")
