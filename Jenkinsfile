@@ -30,6 +30,7 @@ pipeline {
         }
        
         stage('Push') {
+          dir('/home/ubuntu/workspace/nodeapp') {
             steps { 
                 sh 'docker login -u=${dockeruser} -p={dockerpassword}'
                 sh 'docker build -t ${APP} .'
@@ -37,7 +38,7 @@ pipeline {
                 sh 'docker push ${REPO}/${APP}:${env.BUILD_NUMBER}'
              }
         }
-  
+        }
         stage('Deploy') {
             steps {
                 sh 'ssh -t ubuntu@${deploy_ip} "./deploy.sh"'
