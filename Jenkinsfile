@@ -25,14 +25,17 @@ pipeline {
         stage('Clean') {
             steps {
                 sh 'docker-compose down'
+                sh 'docker system prune -y'
             }
         }
        
         stage('Deploy') {
             steps {
-                sh 'ssh -t ubuntu@${deploy_ip} "./deploy.sh"'
-            }
+                withCredentials([sshUserPrivateKey(credentialsId: 'ariel', keyFileVariable: 'SSH_KEY')]) {
+            sh "ssh -i $SSH_KEY ubuntu@${deploy_ip} './deploy.sh'"
         }
+    }
+}
     }
     
     post {
