@@ -3,7 +3,6 @@ pipeline {
     
     environment {
         dockeruser = credentials('dockeruser')
-        dockerpassword = credentials('dockerpassword')
         deploy_ip = credentials('deployip')
         REPO = 'arieldomchik'
         APP = 'nodeapp'
@@ -32,6 +31,7 @@ pipeline {
         stage('Push') {
             steps { 
               dir('/home/ubuntu/workspace/nodeapp') {
+                sh 'cat /home/ubuntu/docker.txt | docker login -u ${dockeruser} --password-stdin
                 sh 'docker build -t ${APP} .'
                 sh 'docker tag ${APP} ${REPO}/${APP}:${env.BUILD_NUMBER}'
                 sh 'docker push ${REPO}/${APP}:${env.BUILD_NUMBER}'
