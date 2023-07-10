@@ -38,6 +38,7 @@ pipeline {
        }
         stage('Deploy') {
             steps {
+                sh 'ssh ubuntu@${deploy_ip} "docker compose down"'
                 sh 'ssh ubuntu@${deploy_ip} "docker-compose up --build -d"'
                }
             }
