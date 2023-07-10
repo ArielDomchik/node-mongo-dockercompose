@@ -45,15 +45,3 @@ pipeline {
 }
     }
     
-    post {
-        always {
-            sh 'docker rmi -f $(docker images -q)'
-        }
-        success {
-            slackSend (channel: '#general', token: '<secret-token>', message: "Pipeline ran successfully!")
-        }
-        failure {
-            slackSend (channel: "#general", token: '<secret-token>', message: "Test failed! Please watch the logs.")
-        }
-    }
-}
