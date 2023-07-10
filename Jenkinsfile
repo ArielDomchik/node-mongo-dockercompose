@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'Slave 1' }
     
     environment {
         dockeruser = credentials('dockeruser')
@@ -28,15 +28,6 @@ pipeline {
             }
         }
        
-        stage('Push') {
-            steps { 
-              dir('/home/ubuntu/workspace/nodeapp') {
-                sh 'cat /home/ubuntu/docker.txt | docker login -u ${dockeruser} --password-stdin'
-                sh 'docker build -t ${APP} .'
-                sh 'docker tag ${APP} ${REPO}/${APP}:${BUILD_NUMBER}'
-                sh 'docker push ${REPO}/${APP}:${BUILD_NUMBER}'
-             }
-        }
         }
         stage('Deploy') {
             steps {
