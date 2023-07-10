@@ -38,10 +38,11 @@ pipeline {
        }
         stage('Deploy') {
             steps {
-              dir('/home/ubuntu') {
-                sh 'ssh -i "ariel.pem" ubuntu@${deploy_ip} "./deploy.sh"'
+              sshagent(credentials : ['arielp']){
+
+               sh "./deploy.sh"
+
+            }
         }
     }
-}
-}
 }
