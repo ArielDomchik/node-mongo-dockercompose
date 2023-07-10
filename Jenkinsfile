@@ -38,10 +38,8 @@ pipeline {
        }
         stage('Deploy') {
             steps {
-              dir('/home/ubuntu') {
                 sh 'ubuntu@${deploy_ip} "./deploy.sh"'
                }
             }
         }
     }
-}
