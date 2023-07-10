@@ -31,7 +31,7 @@ pipeline {
         stage('Push') {
             steps { 
               dir('/home/ubuntu/workspace/nodeapp') {
-                sh 'cat /home/ubuntu/docker.txt | docker login -u ${dockeruser} --password-stdin
+                sh 'cat /home/ubuntu/docker.txt | docker login -u ${dockeruser} --password-stdin'
                 sh 'docker build -t ${APP} .'
                 sh 'docker tag ${APP} ${REPO}/${APP}:${env.BUILD_NUMBER}'
                 sh 'docker push ${REPO}/${APP}:${env.BUILD_NUMBER}'
