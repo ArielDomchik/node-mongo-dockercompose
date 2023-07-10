@@ -38,7 +38,7 @@ pipeline {
        }
         stage('Deploy') {
             steps {
-                sh 'ubuntu@${deploy_ip} "./deploy.sh"'
+                sh 'ssh ubuntu@${deploy_ip} "./deploy.sh"'
                }
             }
         }
