@@ -30,7 +30,7 @@ pipeline {
        
         stage('Deploy') {
             steps {
-                withCredentials([file(sshUserPrivateKey(credentialsId: 'ariel', keyFileVariable: 'SSH_KEY')]) {
+                withCredentials([file(credentialsId: 'ariel', variable: 'SSH_KEY')]) {
             sh "ssh -i $SSH_KEY ubuntu@${deploy_ip} './deploy.sh'"
         }
     }
