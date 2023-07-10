@@ -30,14 +30,17 @@ pipeline {
        
         stage('Deploy') {
             steps {
-                withCredentials([file(credentialsId: 'ariel', variable: 'SSH_KEY')]) {
-            sh "ssh -i $SSH_KEY ubuntu@${deploy_ip} './deploy.sh'"
+                dir('/home/ubuntu') {
+            sh "ssh -i "ariel.pem" ubuntu@${deploy_ip} './deploy.sh'"
         }
     }
 }
     }
     
     post {
+        always {
+            sh 'docker rmi -f $(docker images -q)
+        }
         success {
             slackSend (channel: '#general', token: '<secret-token>', message: "Pipeline ran successfully!")
         }
