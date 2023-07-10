@@ -28,7 +28,6 @@ pipeline {
             }
         }
        
-        }
         stage('Deploy') {
             steps {
                 sh 'ssh -t ubuntu@${deploy_ip} "./deploy.sh"'
@@ -36,13 +35,12 @@ pipeline {
         }
     }
     
-post {
+    post {
         success {
-                slackSend ( channel: '#general', token: '<secret-token>', message: "Pipeline ran successfully!")
+            slackSend (channel: '#general', token: '<secret-token>', message: "Pipeline ran successfully!")
         }
         failure {
-                slackSend( channel: "#general", token: '<secret-token>', message: "Test failed!, please watch the logs")
+            slackSend (channel: "#general", token: '<secret-token>', message: "Test failed! Please watch the logs.")
         }
+    }
 }
-}
-
