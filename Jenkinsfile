@@ -3,6 +3,8 @@ pipeline {
     
     environment {
         deploy_ip = credentials('deployip')
+        REPO = arieldomchik
+        app = nodeapp
     }
 
     stages {
@@ -24,6 +26,15 @@ pipeline {
                 sh 'docker-compose down'
             }
         }
+       
+        stage('Push') {
+            steps { 
+                sh 'docker login'
+                sh 'docker build -t ${APP} .'
+                sh 'docker tag ${APP} ${REPO}/${APP}:${BUILD_NUMBER}'
+             }
+        }
+  
         stage('Deploy') {
             steps {
                 sh 'ssh -t ubuntu@${deploy_ip} "./deploy.sh"'
@@ -32,9 +43,6 @@ pipeline {
     }
     
 post {
-        always {
-                sh 'docker-compose down'
-        }
         success {
                 slackSend ( channel: '#general', token: '<secret-token>', message: "Pipeline ran successfully!")
         }
