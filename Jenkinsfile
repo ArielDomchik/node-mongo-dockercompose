@@ -40,7 +40,7 @@ pipeline {
             steps {
               sshagent(credentials : ['arielp']){
 
-               sh './deploy.sh'
+               sh 'ssh ubuntu@${deploy_ip} "./deploy.sh"'
 
             }
         }
