@@ -6,6 +6,7 @@ services:
     container_name: nodeapp
     ports:
       - 3000:3000
+    image: ${REPO}/${APP}:${env.BUILD_NUMBER}
   mongo:
     image: mongo
     container_name: mongodb-container
