@@ -24,7 +24,7 @@ pipeline {
                 sh 'docker-compose down'
             }
         }
-        stage('Deploy) {
+        stage('Deploy') {
             steps {
                 sh 'ssh -t ubuntu@${deploy_ip} "./deploy.sh"'
             }
