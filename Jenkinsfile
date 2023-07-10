@@ -25,7 +25,6 @@ pipeline {
         stage('Clean') {
             steps {
                 sh 'docker-compose down'
-                sh 'docker images rm -f $(docker images -a -q)'
             }
         }
        
