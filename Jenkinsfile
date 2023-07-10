@@ -6,7 +6,7 @@ pipeline {
         dockerpassword = credentials('dockerpassword')
         deploy_ip = credentials('deployip')
         REPO = 'arieldomchik'
-        app = 'nodeapp'
+        APP = 'nodeapp'
     }
 
     stages {
