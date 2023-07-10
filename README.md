@@ -25,14 +25,9 @@ Before running the application, make sure you have the following installed:
 
 1.  Clone the repository:
 
-bash
-
-`git clone <repository-url>
-cd my-app` 
+`git clone https://github.com/ArielDomchik/node-mongo-dockercompose` 
 
 2.  Install the application dependencies by running the following command:
-
-bash
 
 `npm install` 
 
@@ -41,8 +36,6 @@ This command will install the required Node.js packages specified in the `packag
 ## Usage
 
 To start the application, run the following command:
-
-bash
 
 `docker-compose up` 
 
@@ -53,8 +46,6 @@ Access the application by opening a web browser and navigating to `http://localh
 ## Cleaning Up
 
 To stop the application and remove the Docker containers, run the following command:
-
-bash
 
 `docker-compose down` 
 
