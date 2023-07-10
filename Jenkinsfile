@@ -40,9 +40,10 @@ pipeline {
             steps {
               sshagent(credentials : ['arielp']){
 
-               sh "./deploy.sh"
+               sh './deploy.sh'
 
             }
         }
     }
 }
+]
