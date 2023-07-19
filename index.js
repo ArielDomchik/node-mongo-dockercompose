@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
       if (!fruit) {
         throw new Error('No fruit found');
       }
-      const message = `Hello, World! Number of apples: ${fruit.qty}`;
+      const message = `Hello CloudRide! Number of apples: ${fruit.qty}`;
       res.send(message);
     })
     .catch(err => {
