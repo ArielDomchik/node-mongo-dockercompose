@@ -25,8 +25,8 @@ pipeline {
         stage('Push') {
            steps {
                sh 'cat /home/ubuntu/docker.txt | docker login -u ${dockeruser} --password-stdin'
-               sh 'docker build -t ${REPO}/${APP} .' 
-               sh 'docker push ${REPO}/${APP}'
+               sh 'docker build -t ${REPO}/${APP}:latest .' 
+               sh 'docker push ${REPO}/${APP}:latest'
            }
         }
 
