@@ -26,10 +26,10 @@ Before running the updated application, make sure you have the following install
 -   Docker Compose: [Installation Guide](https://docs.docker.com/compose/install/)
 -   Terraform: [Installation Guide](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 -   AWS CLI: [Installation Guide](https://aws.amazon.com/cli/)
--  Jenkins: [Installation Guide](https://www.jenkins.io/doc/book/installing/linux/)
+-   Jenkins: [Installation Guide](https://www.jenkins.io/doc/book/installing/linux/)
 
 ** note: Jenkins can be run as a docker container
-Additionally, ensure you have valid AWS credentials set up to allow Terraform to interact with your AWS account.
+** Additionally, ensure you have valid AWS credentials set up to allow Terraform to interact with your AWS account.
 
 ## Setup
 
@@ -109,11 +109,11 @@ To access the application, open a web browser and navigate to `http://localhost:
 
 To stop the application and remove the Docker containers, run the following command:
 
-`docker-compose down` 
+`docker compose down` 
 
 To destroy the AWS infrastructure provisioned by Terraform, go to the `terraform/` directory and run:
 
-`terraform destroy` 
+`terraform destroy --auto-approve` 
 
 This will remove all the resources created in your AWS account.
 
