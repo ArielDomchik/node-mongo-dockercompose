@@ -117,6 +117,4 @@ To destroy the AWS infrastructure provisioned by Terraform, go to the `terraform
 
 This will remove all the resources created in your AWS account.
 
-----------
-
-Feel free to further customize this README file according to your specific project requirements and add any additional information that you think is relevant. With the updated configuration using Terraform and the Application Load Balancer, your application is now highly available and can scale to handle increased traffic efficiently.
+-------------
