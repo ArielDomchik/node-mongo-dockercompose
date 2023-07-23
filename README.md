@@ -35,8 +35,8 @@ Additionally, ensure you have valid AWS credentials set up to allow Terraform to
 
 1.  Clone the repository:
 
-`git clone https://github.com/ArielDomchik/node-mongo-dockercompose-terraform
-cd node-mongo-dockercompose-terraform` 
+`git clone https://github.com/ArielDomchik/node-mongo-dockercompose`
+`cd node-mongo-dockercompose-terraform` 
 
 2.  Install the application dependencies by running the following command:
 
